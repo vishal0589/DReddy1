@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import clientLogo from './images/dreddy.png';
-import yourLogo from './images/pinnacle.png';
 import {
   LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
   ResponsiveContainer, PieChart, Pie, Cell
@@ -8,6 +6,8 @@ import {
 import {
   Package, TrendingUp, AlertTriangle, RefreshCw
 } from 'lucide-react';
+import clientLogo from './images/dreddy.png';
+import yourLogo from './images/pinnacle.png';
 import './App.css'; // Ensure this includes necessary styling
 
 const Card = ({ children, className = '', style = {} }) => (
@@ -169,7 +169,7 @@ function App() {
   const totalReturned = filteredData.reduce((sum, data) => sum + data.returned, 0);
   const totalLeftOrg = filteredData.reduce((sum, data) => sum + data.leftOrg, 0);
   const totalLost = filteredData.reduce((sum, data) => sum + data.lost, 0);
-  //const preDispatchLoss = totalInitialList - totalFinalList;
+  const preDispatchLoss = totalInitialList - totalFinalList;
 
   // Calculate rates
   const preDispatchRetentionRate = ((totalFinalList / totalInitialList) * 100 || 0).toFixed(2);
@@ -191,9 +191,8 @@ function App() {
       {/* Header */}
       <header className="bg-white shadow py-4 px-6 flex items-center justify-between">
         <div className="flex items-center">
-          {/* Replace 'client-logo.png' with the actual path to the client's logo */}
-          <img src={clientLogo} alt="Check" className="h-10 mr-3" />
-          <h1 className="text-2xl font-bold text-gray-800">Gift Delivery Dashboard FY 2024</h1>
+          <img src={clientLogo} alt="Client Logo" className="mr-3" style={{ height: '3.25rem' }} />
+          <h1 className="text-2xl font-bold text-gray-800">Spreading Happiness Dashboard FY2024</h1>
         </div>
         <div className="flex items-center">
           {/* Month Selector */}
@@ -210,7 +209,6 @@ function App() {
           </select>
           {/* Company Logo */}
           <span className="text-sm text-gray-500 mx-4">Powered by</span>
-          {/* Replace 'your-logo.png' with the actual path to your logo */}
           <img src={yourLogo} alt="Your Logo" className="h-8" />
         </div>
       </header>
@@ -291,9 +289,30 @@ function App() {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="initialList" name="Initial List" stroke={COLORS.primary} />
-                    <Line type="monotone" dataKey="delivered" name="Delivered" stroke={COLORS.success} />
-                    <Line type="monotone" dataKey="returned" name="Returns" stroke={COLORS.warning} />
+                    <Line
+                      type="monotone"
+                      dataKey="initialList"
+                      name="Initial List"
+                      stroke={COLORS.primary}
+                      strokeWidth={3}
+                      dot={{ r: 4 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="delivered"
+                      name="Delivered"
+                      stroke={COLORS.success}
+                      strokeWidth={3}
+                      dot={{ r: 4 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="returned"
+                      name="Returns"
+                      stroke={COLORS.warning}
+                      strokeWidth={3}
+                      dot={{ r: 4 }}
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
