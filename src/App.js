@@ -169,7 +169,7 @@ function App() {
   const totalReturned = filteredData.reduce((sum, data) => sum + data.returned, 0);
   const totalLeftOrg = filteredData.reduce((sum, data) => sum + data.leftOrg, 0);
   const totalLost = filteredData.reduce((sum, data) => sum + data.lost, 0);
-  const preDispatchLoss = totalInitialList - totalFinalList;
+  //const preDispatchLoss = totalInitialList - totalFinalList;
 
   // Calculate rates
   const preDispatchRetentionRate = ((totalFinalList / totalInitialList) * 100 || 0).toFixed(2);
